@@ -36,9 +36,9 @@
 
     <link name="base_link">
         <inertial>
-            <mass value="25" />
+            <mass value="20.5" />
             <origin xyz="0 0 0" rpy="0 0 0" />
-            <inertia ixx="1.445" ixy="0" ixz="0" iyy="1.445" iyz="0" izz="1.953" />
+            <inertia ixx="0.47406249999999994" ixy="0.0" ixz="0.0" iyy="0.47406249999999994" iyz="0.0" izz="0.640625" />
         </inertial>
         
         <visual>
@@ -71,9 +71,9 @@
 
     <link name="left_wheel">
         <inertial>
-            <mass value="0.5" />
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+            <mass value="1.5" />
+            <origin xyz="0 0 0" rpy="-1.575 0 0" />
+            <inertia ixx="0.00034687500000000007" ixy="0.0" ixz="0.0" iyy="0.00034687500000000007" iyz="0.0" izz="0.0004687500000000001" />
         </inertial>
         <visual>
             <geometry>
@@ -89,12 +89,13 @@
     </link>
 
     <gazebo reference="left_wheel">
+        <mu1 value="5.0"/>
+		<mu2 value="0.5"/>
+		<kp value="10000000.0" />
+		<kd value="1.0" />
+		<fdir1 value="1 0 0"/>
         <material>Gazebo/Red</material>
-        <mu1 value="0.001"/>
-        <mu2 value="0.001"/>
     </gazebo>
-
-
 
 
     <!-- RIGHT WHEEL LINK -->
@@ -108,9 +109,9 @@
 
     <link name="right_wheel">
         <inertial>
-            <mass value="0.5" />
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+            <mass value="1.5" />
+            <origin xyz="0 0 0" rpy="-1.575 0 0" />
+            <inertia ixx="0.00034687500000000007" ixy="0.0" ixz="0.0" iyy="0.00034687500000000007" iyz="0.0" izz="0.0004687500000000001" />
         </inertial>
         
         <visual>
@@ -127,9 +128,12 @@
     </link>
 
     <gazebo reference="right_wheel">
+        <mu1 value="5.0"/>
+		<mu2 value="0.5"/>
+		<kp value="10000000.0" />
+		<kd value="1.0" />
+		<fdir1 value="1 0 0"/>
         <material>Gazebo/Red</material>
-        <mu1 value="0.001"/>
-        <mu2 value="0.001"/>
     </gazebo>
 
     <!-- FRONT CASTER WHEEL -->
@@ -137,7 +141,7 @@
     <joint name="front_caster_wheel_joint" type="fixed">
         <parent link="base_link"/>
         <child link="front_caster"/>
-        <origin xyz="-0.1 0.0 -0.15" rpy="0 0 0" />
+        <origin xyz="0.1 0.0 -0.15" rpy="0 0 0" />
         <axis xyz="0 0 0"/>
     </joint>
 
@@ -152,14 +156,21 @@
                 <sphere radius="0.025"/>
             </geometry>
         </collision>
+        <inertial>
+            <mass value="0.5" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.00012500000000000003" ixy="0.0" ixz="0.0" iyy="0.00012500000000000003" iyz="0.0" izz="0.00012500000000000003" />
+        </inertial>
     </link>
 
     <gazebo reference="front_caster">
-        <material>Gazebo/Blue</material>
         <mu1 value="0.0"/>
         <mu2 value="0.0"/>
+        <kp value="10000000.0" />
+        <kd value="100.0" />
+        <fdir1 value="0 0 1"/>
+        <material>Gazebo/Gray</material>
     </gazebo>
-
 
 
     <!-- REAR CASTER WHEEL -->
@@ -167,7 +178,7 @@
     <joint name="rear_caster_wheel_joint" type="fixed">
         <parent link="base_link"/>
         <child link="back_caster"/>
-        <origin xyz="0.1 0.0 -0.15" rpy="0 0 0" />
+        <origin xyz="-0.1 0.0 -0.15" rpy="0 0 0" />
         <axis xyz="0 0 0"/>
     </joint>
 
@@ -182,12 +193,20 @@
                 <sphere radius="0.025"/>
             </geometry>
         </collision>
+        <inertial>
+            <mass value="0.5" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.00012500000000000003" ixy="0.0" ixz="0.0" iyy="0.00012500000000000003" iyz="0.0" izz="0.00012500000000000003" />
+        </inertial>
     </link>
 
     <gazebo reference="back_caster">
-        <material>Gazebo/Blue</material>
         <mu1 value="0.0"/>
         <mu2 value="0.0"/>
+        <kp value="10000000.0" />
+        <kd value="100.0" />
+        <fdir1 value="0 0 1"/>
+        <material>Gazebo/Gray</material>
     </gazebo>
  
    <!-- Gazebo tags - Diff driver -->
