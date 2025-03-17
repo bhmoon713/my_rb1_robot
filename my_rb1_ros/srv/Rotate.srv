@@ -1,0 +1,3 @@
+int32 degrees  # Rotation angle (in degrees)
+---
+string result  # Response message
