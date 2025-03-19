@@ -82,7 +82,7 @@ def service_callback(request):
             rospy.logerr("❌ Invalid input: Angle must be a number.")
             return RotateResponse("Error: Invalid input. Angle must be a number.")
 
-        if abs(request.degrees) >= 360:
+        if abs(request.degrees) >= 361:
             rospy.logerr("❌ Invalid input: Angle must be between -360 and 360 degrees.")
             return RotateResponse("Error: Input value must be smaller than 360°.")
 
